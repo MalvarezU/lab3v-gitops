@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: lab3v-project
+  namespace: argocd
+spec:
+  description: Project for Lab3V Application
+  sourceRepos:
+  - https://github.com/tu-usuario/lab3v.git  # <-- CAMBIA ESTO
+  destinations:
+  - namespace: lab3v
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  - group: rbac.authorization.k8s.io
+    kind: Role
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+  namespaceResourceWhitelist:
+  - group: apps
+    kind: Deployment
+  - group: apps
+    kind: ReplicaSet
+  - group: apps
+    kind: DaemonSet
+  - group: ''
+    kind: Service
+  - group: ''
+    kind: ConfigMap
+  - group: ''
+    kind: Secret
+  - group: ''
+    kind: PersistentVolumeClaim
+  - group: networking.k8s.io
+    kind: Ingress
+  orphanedResources:
+    warn: false

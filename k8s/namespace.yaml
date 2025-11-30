@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: lab3v
+  labels:
+    name: lab3v
+    environment: development
