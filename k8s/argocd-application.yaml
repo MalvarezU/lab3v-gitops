@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/tu-usuario/lab3v.git  # <-- CAMBIA ESTO
+    repoURL: https://github.com/MalvarezU/lab3v-gitops.git
     targetRevision: HEAD
     path: k8s
   destination:
@@ -17,17 +17,11 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-    - CreateNamespace=true
-    - PrunePropagationPolicy=foreground
-    - PruneLast=true
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
   ignoreDifferences:
-  - group: apps
-    kind: Deployment
-    jsonPointers:
-    - /spec/replicas
-  retry:
-    limit: 5
-    backoff:
-      duration: 5s
-      factor: 2
-      maxDuration: 3m
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /spec/replicas

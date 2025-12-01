@@ -19,7 +19,7 @@ metadata:
   name: lab3v
   namespace: lab3v
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: lab3v
